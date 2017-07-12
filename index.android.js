@@ -3,10 +3,10 @@
  */
 
 import {
-    AppRegistry,
+    AppRegistry
 } from 'react-native';
 
 import App from './src/app';
 
 
-AppRegistry.registerComponent('RNTrain', () => RNTrain);
+AppRegistry.registerComponent('RNTrain', () => App);
