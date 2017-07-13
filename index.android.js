@@ -1,9 +1,9 @@
 /**
- * React Native TODO sample
+ * React Native TODO Sample
  */
 
 import {
-    AppRegistry
+    AppRegistry,
 } from 'react-native';
 
 import App from './src/app';

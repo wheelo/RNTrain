@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 
 class Header extends Component {
+    // TODO input背景色调整下..
     render() {
         return (
             <View style={styles.header}>
@@ -14,10 +15,12 @@ class Header extends Component {
                 value={this.props.value}
                 onChangeText={this.props.onChange}
                 onSubmitEditing={this.props.onAddItem}
-                placeholder="What needs to be done?"
+                placeholder="想要做什么?"
                 blurOnSubmit={false}
                 returnKeyType="done"
                 style={styles.input}
+                autoCapitalize="none"
+                autoCorrect={false}
             />
             </View>
         );
@@ -38,7 +41,10 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         marginLeft: 16,
-        height: 50
+        height: 50,
+        borderWidth: 1,
+        borderColor: '#eeeeee',
+        paddingLeft: 12
     }
 })
 

@@ -7,7 +7,7 @@ import {
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Row from "./components/Row";
+import ListItem from "./components/ListItem";
 
 const filterItems = (filter, items) => {
   	return items.filter(item => {
@@ -16,6 +16,7 @@ const filterItems = (filter, items) => {
     	if (filter === "ACTIVE") return !item.complete;
   	});
 };
+
 /* TODO
 1. 添加每个状态的总数
 2. willreceiveProps
@@ -61,12 +62,12 @@ class App extends Component {
     	this.setSource(this.state.items, filterItems(filter, this.state.items), {filter})
   	}
 
-  	handleClearComplete() {
+  	handleClearComplete = () => {
     	const newItems = filterItems("ACTIVE", this.state.items);
     	this.setSource(newItems, filterItems(this.state.filter, newItems));
-  	}
+  	};
 
-  	handleAddItem() {
+  	handleAddItem = () => {
 	    if(!this.state.value){
 	    	return;
 	    }
@@ -79,16 +80,16 @@ class App extends Component {
 		    }
 	    ];
     	this.setSource(newItems, filterItems(this.state.filter, newItems), { value: ''})
-  	}
+  	};
 
-  	handleToggleAllComplete() {
+  	handleToggleAllComplete = () => {
    		const complete = !this.state.allComplete;
    		const newItems = this.state.items.map((item) => ({
     		...item,
     		complete
    		}));
    		this.setSource(newItems, filterItems(this.state.filter, newItems), { allComplete: complete})
-  	}
+  	};
 
   	handleToggleComplete(key, complete) {
     	const newItems = this.state.items.map((item) => {
@@ -134,13 +135,14 @@ class App extends Component {
 
   	render() {
   		// enableEmptySections
+  		// renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
     	return (
       		<View style={styles.container}>
         		<Header
 					value={this.state.value}
 					onAddItem={this.handleAddItem}
 					onChange={value => this.setState({value})}
-					onToggleAllComplete={() => this.handleToggleAllComplete()}
+					onToggleAllComplete={this.handleToggleAllComplete}
 				/>
         	<View style={styles.content}>
 	          	<FlatList
@@ -148,21 +150,23 @@ class App extends Component {
 		            data={this.state.dataSource}
 		            onScroll={() => Keyboard.dismiss()}
 		            renderItem={({ item }) => 
-		            	<Row
+		            	<ListItem
 							onUpdate={text => this.handleUpdateText(item.key, text)}
 							onToggleEdit={editing => this.handleToggleEditing(item.key, editing)}
 							onRemove={() => this.handleRemoveItem(item.key)}
 							onComplete={complete => this.handleToggleComplete(item.key, complete)}
 							{...item}
-						/>}
-	            	renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
+						/>
+					}
+					ItemSeparatorComponent={() => <View style={styles.separator}/>}
+					ListFooterComponent={() => <View style={styles.listFoot}/>}
 	        	/>
 	        </View>
 	        <Footer
 	         	onFilter={filter => this.handleFilter(filter)}
 	          	filter={this.state.filter}
 	          	count={filterItems("ACTIVE", this.state.items).length}
-	          	onClearComplete={() => this.handleClearComplete()}
+	          	onClearComplete={this.handleClearComplete}
 	        />
 	        {this.state.loading &&
 	          	<View style={styles.loading}>
@@ -199,10 +203,16 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	list: {
-		backgroundColor: '#FFF'
+		backgroundColor: '#FFF',
+	},
+	listFoot: {
+		borderTopWidth: 0,
+		borderBottomWidth: 1,
+		borderColor: '#F5F5F5'
 	},
 	separator: {
-		borderWidth: 1,
+		borderTopWidth: 0,
+		borderBottomWidth: 1,
 		borderColor: '#F5F5F5'
 	}
 })

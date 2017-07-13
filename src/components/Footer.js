@@ -7,7 +7,7 @@ class Footer extends Component {
         const { filter } = this.props;
         return (
             <View style={styles.container}>
-                <Text>{this.props.count} count</Text>
+                <Text>总数 <Text style={{fontWeight: 'bold'}}>{this.props.count}</Text></Text>
                 <View style={styles.filters}>
                     <TouchableOpacity style={[styles.filter, filter === "ALL" && styles.selected]} onPress={() => this.props.onFilter("ALL")}>
                     <Text>All</Text>
@@ -20,7 +20,7 @@ class Footer extends Component {
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity onPress={this.props.onClearComplete} style={[styles.filter, styles.outline]}>
-                    <Text>Clear</Text>
+                    <Text>清除</Text>
                 </TouchableOpacity>
             </View>
         );
