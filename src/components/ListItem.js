@@ -12,7 +12,7 @@ class ListItem extends Component {
 
         const removeButton = (
             <TouchableOpacity onPress={this.props.onRemove}>
-            <Text style={styles.destroy}>X</Text>
+            <Text style={styles.delete}>X</Text>
             </TouchableOpacity>
         );
 
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         color: "#4d4d4d",
     },
-    destroy: {
+    delete: {
         fontSize: 20,
         color: "#cc9a9a"
     }
