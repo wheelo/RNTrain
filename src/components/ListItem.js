@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Switch, TouchableOpacity, TextInput } from "react-native";
 
 class ListItem extends Component {
+
     render() {
         const { complete } = this.props;
         const textComponent = (

@@ -9,18 +9,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ListItem from "./components/ListItem";
 
-const filterItems = (filter, items) => {
-  	return items.filter(item => {
-    	if (filter === "ALL") return true;
-    	if (filter === "COMPLETED") return item.complete;
-    	if (filter === "ACTIVE") return !item.complete;
-  	});
-};
+// Change State
+import { 
+	addItem, removeItem, toggleComplete, toggleAllComplete, 
+	updateText, toggleEditing, filterItems, clearItem
+} from "./stateChanges";
 
-/* TODO
-1. 添加每个状态的总数
-2. willreceiveProps
-*/
+
+
 class App extends Component {
   	constructor(props) {
     	super(props);
@@ -39,7 +35,11 @@ class App extends Component {
 		AsyncStorage.getItem("items").then(json => {
 			try {
 				const items = JSON.parse(json);
-				this.setSource(items, items, {loading: false});
+				this.setState({
+		      		items,
+		      		dataSource: items,
+		      		loading: false
+		    	})
 			} catch (error) {
 				this.setState({
 					loading: false
@@ -47,95 +47,56 @@ class App extends Component {
 			}
 		});
 	}
-
-  	// Class prop arrow function
-  	setSource = (items, itemsDataSource, otherState ={}) => {
-    	this.setState({
-      		items,
-      		dataSource: itemsDataSource,
-      		...otherState
-    	})
-    	AsyncStorage.setItem("items", JSON.stringify(items));
+  	
+  	// Class property
+  	handleFilter = filter => {
+  		this.setState(filterItems(filter));
   	};
 
-  	handleFilter(filter) {
-    	this.setSource(this.state.items, filterItems(filter, this.state.items), {filter})
-  	}
-
   	handleClearComplete = () => {
-    	const newItems = filterItems("ACTIVE", this.state.items);
-    	this.setSource(newItems, filterItems(this.state.filter, newItems));
+  		this.setState(clearItem('ACTIVE'));
   	};
 
   	handleAddItem = () => {
 	    if(!this.state.value){
 	    	return;
 	    }
-    	const newItems = [
-	      	...this.state.items,
-	      	{
-		        key: Date.now(),
-		        text: this.state.value,
-		        complete: false
-		    }
-	    ];
-    	this.setSource(newItems, filterItems(this.state.filter, newItems), { value: ''})
+	    this.setState(addItem);
+	    /*this.refs.refFooter.setNativeProps({
+	    	style:{ color:'blue' },
+	    	activeCount: this.activeCount
+	    }); */
+  	};
+
+  	handleRemoveItem = key => {
+  		this.setState(removeItem(key));
   	};
 
   	handleToggleAllComplete = () => {
-   		const complete = !this.state.allComplete;
-   		const newItems = this.state.items.map((item) => ({
-    		...item,
-    		complete
-   		}));
-   		this.setSource(newItems, filterItems(this.state.filter, newItems), { allComplete: complete})
+  		this.setState(toggleAllComplete);
   	};
 
-  	handleToggleComplete(key, complete) {
-    	const newItems = this.state.items.map((item) => {
-	      	if(item.key != key ) {
-	        	return item;
-	      	}
-	      	return {
-	        	...item,
-	        	complete
-      		};
-    	})
-    	this.setSource(newItems, filterItems(this.state.filter, newItems));
-  	}
-
-  	handleRemoveItem(key) {
-    	const newItems = this.state.items.filter((item) => {
-      		return item.key != key
-    	});
-    	this.setSource(newItems, filterItems(this.state.filter, newItems));
-  	}
+  	handleToggleComplete = (key, complete) => {
+  		this.setState(toggleComplete(key, complete));
+  	};
 
   	handleUpdateText(key, text) {
-    	const newItems = this.state.items.map((item) => {
-      		if(item.key != key) return item;
-      		return {
-		        ...item,
-		        text
-      		};
-    	});
-    	this.setSource(newItems, filterItems(this.state.filter, newItems));
+  		this.setState(updateText(key, text));
   	}
 
   	handleToggleEditing(key, editing) {
-    	const newItems = this.state.items.map((item) => {
-      		if(item.key != key) return item;
-		      	return {
-		        ...item,
-		        editing
-		    }
-    	});
-    	this.setSource(newItems, filterItems(this.state.filter, newItems));
+  		this.setState(toggleEditing(key, editing));
   	}
 
+  	// Getter
+  	get activeCount() {
+		return this.state.items.reduce(
+			(sum, todo) => sum + (todo.complete ? 0 : 1),
+			0
+		)
+	}
+
   	render() {
-  		// enableEmptySections
-  		// renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
     	return (
       		<View style={styles.container}>
         		<Header
@@ -162,12 +123,13 @@ class App extends Component {
 					ListFooterComponent={() => <View style={styles.listFoot}/>}
 	        	/>
 	        </View>
-	        <Footer
-	         	onFilter={filter => this.handleFilter(filter)}
-	          	filter={this.state.filter}
-	          	count={filterItems("ACTIVE", this.state.items).length}
-	          	onClearComplete={this.handleClearComplete}
-	        />
+		        <Footer
+		         	onFilter={filter => this.handleFilter(filter)}
+		          	filter={this.state.filter}
+		          	count={this.state.items.length}
+		          	activeCount={this.activeCount}
+		          	onClearComplete={this.handleClearComplete}
+		        />
 	        {this.state.loading &&
 	          	<View style={styles.loading}>
 	            <ActivityIndicator
@@ -181,6 +143,7 @@ class App extends Component {
   	}
 }
 
+// 样式
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
