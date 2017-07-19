@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 
 class Header extends Component {
-    // TODO input背景色调整下..
     render() {
         return (
             <View style={styles.header}>
             <TouchableOpacity onPress={this.props.onToggleAllComplete}>
-                <Text style={styles.toggleIcon}>
+                <Text style={{fontSize: 30, color: "#CCC"}}>
                     {String.fromCharCode(10003)}
                 </Text>
             </TouchableOpacity>
@@ -33,10 +32,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center"
-    },
-    toggleIcon: {
-        fontSize: 30,
-        color: "#CCC"
     },
     input: {
         flex: 1,

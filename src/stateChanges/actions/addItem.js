@@ -1,4 +1,4 @@
-import setState from '../setState';
+import setSource from '../setSource';
 
 // previous state and current props
 const addItem = state => {
@@ -11,7 +11,7 @@ const addItem = state => {
 	    }
     ];
     // selector & AsyncStorage
-	return setState(newItems, state.filter, {value: ''});
+	return setSource(newItems, state.filter, {value: ''});
 };
 
 

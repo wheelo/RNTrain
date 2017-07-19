@@ -6,7 +6,25 @@ import {
     AppRegistry,
 } from 'react-native';
 
-import App from './src/app';
+
+import Navigator from 'native-navigation';
+
+// import App from './src/app';
+//AppRegistry.registerComponent('RNTrain', () => App);
+
+Navigator.registerScreen('RNTrain', () => require('./src/List'), {
+	waitForRender: false,
+	// todo
+  	initialConfig: {
+    	title: '列表'
+  	}
+});
 
 
-AppRegistry.registerComponent('RNTrain', () => App);
+Navigator.registerScreen('Edit', () => require('./src/Edit'), {
+	waitForRender: true,
+  	initialConfig: {
+    	title: '编辑'
+  	}
+});
+

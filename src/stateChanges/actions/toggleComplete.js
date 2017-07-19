@@ -1,4 +1,4 @@
-import setState from '../setState';
+import setSource from '../setSource';
 
 
 const toggleComplete = (key, complete) => state => {
@@ -11,7 +11,7 @@ const toggleComplete = (key, complete) => state => {
         	complete
   		};
 	});
-	return setState(newItems, state.filter);
+	return setSource(newItems, state.filter);
 };
 
 

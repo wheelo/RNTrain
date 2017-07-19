@@ -1,9 +1,8 @@
-import setState from '../setState';
-
+import setSource from '../setSource';
 
 
 const filterItems = filter => state => {
-	return setState(state.items, filter, {filter});
+	return setSource(state.items, filter, {filter});
 };
 
 

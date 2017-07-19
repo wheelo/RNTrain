@@ -8,8 +8,12 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <React/RCTBridge.h>
+#import "RNTrain-Swift.h" // Replace ProjectName by your project name
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, RCTBridgeDelegate, ReactNavigationCoordinatorDelegate>
+
+// @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 

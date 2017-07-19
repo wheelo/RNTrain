@@ -1,4 +1,4 @@
-import setState from '../setState';
+import setSource from '../setSource';
 
 
 const toggleEditing = (key, editing) => state => {
@@ -9,7 +9,7 @@ const toggleEditing = (key, editing) => state => {
 	        editing
 	    }
 	});
-	return setState(newItems, state.filter);
+	return setSource(newItems, state.filter);
 };
 
 
