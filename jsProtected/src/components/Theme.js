@@ -1,4 +1,6 @@
 import React, { Component } from 'React';
+import PropTypes from 'prop-types';
+
 
 //function that receives a component, and returns a new composed component.
 export default ComposedComponent => class extends Component {
@@ -7,27 +9,26 @@ export default ComposedComponent => class extends Component {
 		if (!ComposedComponent.contextTypes) {
 			ComposedComponent.contextTypes = {};
 		}
-		ComposedComponent.contextTypes.theme = React.PropTypes.string;
+		ComposedComponent.contextTypes.theme = PropTypes.string;
 	}
 
 	static contextTypes = {
-		theme: React.PropTypes.string
-	};
-
-	static propTypes = {
-		theme: React.PropTypes.string
+		theme: PropTypes.string
 	};
 
 	static childContextTypes = {
-		theme: React.PropTypes.string
+		theme: PropTypes.string
 	};
-
+	/*
+	static propTypes = {
+		theme: PropTypes.string
+	};
+	*/
 	getChildContext() {
 		return {theme: this.props.theme || this.context.theme};
 	}
 
 	render() {
-		let props = Object.assign({}, this.props);
-		return <ComposedComponent {...props} />;
+		return <ComposedComponent {...this.props} />;
 	}
 };
