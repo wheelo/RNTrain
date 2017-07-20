@@ -6,10 +6,6 @@ import {
   LayoutAnimation
 } from 'react-native';
 
-// themable
-import themable from './Theme';
-
-
 import Header from "./Header";
 import Footer from "./Footer";
 import ListItem from "./ListItem";
@@ -17,6 +13,9 @@ import ListItem from "./ListItem";
 
 // Changed State
 import * as actions from "../stateChanges";
+
+// let { height, width } = Dimensions.get(“window”);
+import themable from './Theme';
 
 @themable
 class Home extends Component {

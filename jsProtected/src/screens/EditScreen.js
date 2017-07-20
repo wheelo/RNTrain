@@ -27,7 +27,7 @@ class EditScreen extends Component {
 		        onRightPress={(index) => console.log('onRightPress', index)}
 		        onAppear={() => console.log('onAppear')}
 		    >
-		    	<Edit theme={'dark'} />
+		    	<Edit theme={'dark'} {...this.props}/>
     		</Navigator.Config>
     	);
   	}

@@ -16,7 +16,7 @@ class HomeScreen extends Component {
 
   	componentWillMount() {
   		// 初始化的theme从AsyncStorage中更新: dark / light
-  		// this.setState({ theme: 'light' })
+  		// this.setState({ theme: 'dark' })
   	}
 
   	render() {

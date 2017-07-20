@@ -4,12 +4,12 @@ import {
   ActivityIndicator, Platform, AsyncStorage
 } from 'react-native';
 
-
+import Navigator from 'native-navigation';
 import { updateText, toggleEditing} from "../stateChanges";
+
 // themable
 import themable from './Theme';
 
-// let { height, width } = Dimensions.get(“window”);
 
 @themable
 class Edit extends Component {
@@ -87,7 +87,6 @@ class Edit extends Component {
   	// 保存按钮
   	_renderDoneButton() {
   		const { itemKey } = this.props;
-
         return (
         	<View>
 	            <TouchableOpacity disabled={this.state.disabled} ref={_ => this._doneButton = _} style={styles.done} onPress={() => this.handleToggleEditing(itemKey, false)}>
