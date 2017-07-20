@@ -32,7 +32,7 @@
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge {
     // NSString *path = [NSString stringWithFormat:@"http://%@:8081/index.ios.bundle?platform=ios&dev=true", @"localhost"];
     // return [NSURL URLWithString:path];
-    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 }
 
 - (UIViewController *)rootViewControllerForCoordinator: (ReactNavigationCoordinator *)coordinator {

@@ -3,6 +3,7 @@ import Navigator from 'native-navigation';
 
 import { View, Text, StyleSheet, Switch, TouchableOpacity } from "react-native";
 
+
 class ListItem extends Component {
     ScreenTo = () => {
         Navigator.push('Edit', {

@@ -8,8 +8,11 @@ import {
 
 import Navigator from 'native-navigation';
 
+// 初始化配置
+import './setup';
 
-// old: AppRegistry.registerComponent('Home', () => Home);
+
+// AppRegistry.registerComponent('Home', () => Home);
 Navigator.registerScreen('Home', () => require('./src/screens/HomeScreen'), {
 	waitForRender: false,
   	initialConfig: {
