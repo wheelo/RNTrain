@@ -6,8 +6,12 @@ import {
 
 
 import { updateText, toggleEditing} from "../stateChanges";
+// themable
+import themable from './Theme';
 
 // let { height, width } = Dimensions.get(“window”);
+
+@themable
 class Edit extends Component {
   	constructor(props) {
     	super(props);

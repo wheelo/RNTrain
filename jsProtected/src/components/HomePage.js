@@ -18,7 +18,7 @@ import ListItem from "./ListItem";
 // Changed State
 import * as actions from "../stateChanges";
 
-
+@themable
 class Home extends Component {
   	constructor(props) {
     	super(props);
@@ -185,5 +185,6 @@ const styles = StyleSheet.create({
 })
 
 
+//export default themable(Home);
 
-export default themable(Home);
+export default Home;
