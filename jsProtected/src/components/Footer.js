@@ -35,7 +35,7 @@ class Footer extends Component {
 
         const {filter, onClearComplete, onFilter, count = 0, activeCount = 0} = this.props;
         // const completedCount = count > activeCount ? (count - activeCount) : 0;
-        return <View style={styles.container}>
+        return <View style={[styles.container, styles.theme]}>
             <View style={styles.filters}>
                 <TouchableOpacity style={[styles.filter, filter === "ALL" && styles.selected]} onPress={() => onFilter("ALL")}>
                 <Text style={styles.text}>All(<Text style={{fontWeight: 'bold'}}>{count}</Text>)</Text>
@@ -55,8 +55,8 @@ class Footer extends Component {
 }
 
 
-// 浅色主题
-const styleLight = StyleSheet.create({
+// 公有样式
+const commonStyle = {
     container: {
         padding: 16,
         flexDirection: "row",
@@ -71,7 +71,12 @@ const styleLight = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1,
         borderColor: "transparent"
-    },
+    }
+}
+
+// 浅色主题
+const styleLight = StyleSheet.create({
+    ...commonStyle,
     selected: {
         borderColor: "rgba(175, 47, 47, .2)"
     },
@@ -82,24 +87,12 @@ const styleLight = StyleSheet.create({
 
 // 深色主题
 const styleNight = StyleSheet.create({
-    container: {
-        padding: 16,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
+    ...commonStyle,
+    theme: {
         backgroundColor: 'black'
     },
     text: {
         color: 'white'
-    },
-    filters: {
-        flexDirection: "row"
-    },
-    filter: {
-        padding: 8,
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: "transparent"
     },
     selected: {
         borderColor: "#fff"
