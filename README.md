@@ -1,29 +1,28 @@
 # RNTrain
-React Native simple todo App using three modes normal / redux / mobx. The demo works as a starter of integrating [Native Navigation](http://airbnb.io/native-navigation) with some exsiting iOS projects(using Pods).
+RN简单TODO项目，此项目也可以作为RN启动项目
 
-## Features
-  - Native Navigation integrated(Pod)
-  - Integrated with the exsting Project(Pod)
-  - Use lastest version of react & react native (FlatList)
+#### 特征
+  - [x]集成Native Navigation(Pod)
+  - [x]集成现有项目(Pod)
+  - [x]使用最新版的RN与React Native
+  - [ ]TypeScript语法支持(todo)
 
-## Installation
+#### 安装
 
 ```sh
 	>> npm install
 	>> pod install
 ```
-- Notice: when initialization of the animation module fails, you should change the incorrect line to `import <React/RCTValueAnimatedNode.h>`
+- 注意安装过程会出现Animation动画库引用错误，找到错误的那一行，修改为：`import <React/RCTValueAnimatedNode.h>`
 
-
-## Usage
+#### 使用
 
 ``` sh
-	// open RNTrain.xcworkspace in Xcode
+	// 找到RNTrain.xcworkspace，Xcode启动
+	// 然后命令行执行:
 	>> sh build.sh
 ```
 
-## References
+#### 参考
 - Native Navigation: http://airbnb.io/native-navigation/docs/installation.html
 - Integrating with exsiting iOS Project: https://facebook.github.io/react-native/docs/integration-with-existing-apps.html
-
-
