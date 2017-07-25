@@ -27,4 +27,4 @@ RN简单TODO项目，此项目也可以作为RN启动项目
 
 ## 参考
 - Native Navigation: http://airbnb.io/native-navigation/docs/installation.html
-- Integrating with exsiting iOS Project: https://facebook.github.io/react-native/docs/integration-with-existing-apps.html
+- 集成现有项目: https://facebook.github.io/react-native/docs/integration-with-existing-apps.html
