@@ -116,6 +116,7 @@
 				48A1201C1F1F78AF0027B4F7 /* Resources */,
 				230F70693DBE2FCA75FD9E2B /* [CP] Embed Pods Frameworks */,
 				42C7A3DD1CEB776A250B7472 /* [CP] Copy Pods Resources */,
+				48FE0E4E1F298A8E007089B4 /* Bundle React Native code and images */,
 			);
 			buildRules = (
 			);
@@ -202,6 +203,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNTrain/Pods-RNTrain-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		48FE0E4E1F298A8E007089B4 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh";
 		};
 		5AC29C1DE9F26F139B83696B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -386,6 +401,7 @@
 				48A120371F1F78AF0027B4F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

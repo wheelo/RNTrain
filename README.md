@@ -2,10 +2,11 @@
 RN简单TODO项目，此项目也可以作为RN启动项目
 
 ## 特征
-  - [x]集成Native Navigation(Pod)
-  - [x]集成现有项目(Pod)
-  - [x]使用最新版的RN与React Native
-  - [ ]TypeScript语法支持(todo)
+  -[x] 集成Native Navigation(Pod)
+  -[x] 集成现有项目(Pod)
+  -[x] 使用最新版的React与React Native
+  -[ ] TypeScript语法支持(Typescript)
+  -[ ] Mobx / redux示例(mobx与redux分支)
 
 [PPT地址](./PPT/RN基础与进阶.key)
 
