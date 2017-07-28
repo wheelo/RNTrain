@@ -1,0 +1,26 @@
+{
+  "version": "0.1.0",
+  "command": "sh",
+  "args": ["-c"],
+  "isShellCommand": true,
+  "showOutput": "silent",
+  "suppressTaskName": true,
+  "tasks": [
+    {
+      "taskName": "Start Typescript Compiler",
+      "isBuildCommand": true,
+      "args": ["node_modules/.bin/tsc"],
+      "problemMatcher": [
+        "$tsc"
+      ]
+    },
+    {
+      "taskName": "Start Typescript Compiler (in watch mode)",
+      "isBuildCommand": true,
+      "args": ["node_modules/.bin/tsc --watch"],
+      "isBackground": true,
+      "problemMatcher": [
+        "$tsc-watch"
+      ]
+    }]
+}

@@ -13,7 +13,7 @@ import './setup';
 
 
 // AppRegistry.registerComponent('Home', () => Home);
-Navigator.registerScreen('Home', () => require('./src/screens/HomeScreen'), {
+Navigator.registerScreen('Home', () => require('./build/screens/HomeScreen'), {
 	waitForRender: false,
   	initialConfig: {
     	title: '列表'
@@ -21,7 +21,7 @@ Navigator.registerScreen('Home', () => require('./src/screens/HomeScreen'), {
 });
 
 
-Navigator.registerScreen('Edit', () => require('./src/screens/EditScreen'), {
+Navigator.registerScreen('Edit', () => require('./build/screens/EditScreen'), {
 	waitForRender: true,
   	initialConfig: {
     	title: '编辑'

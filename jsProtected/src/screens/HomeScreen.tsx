@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 // Navigator
 import Navigator from 'native-navigation';
 
 import Home from "../components/HomePage";
 
+// interface Props
+interface State {
+	theme: String
+}
 
-class HomeScreen extends Component {
-  	constructor(props) {
-    	super(props);
-		this.state = {
-			theme: 'light'
-		};
-  	}
+
+class HomeScreen extends Component<State> {
+	state = { theme: 'dark' }
 
   	componentWillMount() {
   		// 初始化的theme从AsyncStorage中更新: dark / light
@@ -27,7 +27,7 @@ class HomeScreen extends Component {
 		        elevation={4}
 		        onBackPress={() => console.log('onBackPress')}
 		        onLeftPress={() => console.log('onLeftPress')}
-		        onRightPress={(index) => console.log('onRightPress', index)}
+		        onRightPress={index => console.log('onRightPress', index)}
 		        onAppear={() => console.log('onAppear')}
 		    >
     			<Home theme={this.state.theme} />
@@ -36,6 +36,6 @@ class HomeScreen extends Component {
   	}
 }
 
-
+// const styles
 
 export default HomeScreen;

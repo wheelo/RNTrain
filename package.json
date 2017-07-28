@@ -1,9 +1,11 @@
 {
-  "name": "RNTrain",
+  "name": "rntrain-ts",
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "tsc": "tsc --watch",
+    "init": "tsc -init"
   },
   "dependencies": {
     "native-navigation": "^0.2.1",
@@ -11,7 +13,10 @@
     "react-native": "0.46.4"
   },
   "devDependencies": {
+    "@types/react": "^15.0.39",
+    "@types/react-native": "^0.46.7",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-react-native": "2.1.0"
+    "babel-preset-react-native": "2.1.0",
+    "typescript": "^2.4.2"
   }
 }

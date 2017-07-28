@@ -6,11 +6,7 @@ import Edit from "../components/EditPage";
 
 
 class EditScreen extends Component {
-  	constructor(props) {
-    	super(props);
-		this.state = {
-		};
-  	}
+  	state = { theme: 'light' }
 
   	ComponentWillMount() {
   		// theme数据从Async中更新
@@ -27,7 +23,7 @@ class EditScreen extends Component {
 		        onRightPress={(index) => console.log('onRightPress', index)}
 		        onAppear={() => console.log('onAppear')}
 		    >
-		    	<Edit theme={'dark'} {...this.props}/>
+		    	<Edit theme={this.state.theme} {...this.props}/>
     		</Navigator.Config>
     	);
   	}
