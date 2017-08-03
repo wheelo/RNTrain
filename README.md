@@ -5,8 +5,8 @@ RN简单TODO项目，此项目也可以作为RN启动项目
 
   - [x] 集成Native Navigation(Pod)
   - [x] 集成现有项目(Pod)
-  - [x] 使用最新版的React与React Native
-  - [ ] TypeScript语法支持(Typescript)
+  - [x] 使用最新版的React与React Native("react": "16.0.0-alpha.12", "react-native": "^0.47.1")
+  - [x] TypeScript语法支持(TS-sample分支)
   - [ ] Mobx / redux示例(mobx与redux分支)
 
 [PPT地址](./PPT/RN基础与进阶.key)
