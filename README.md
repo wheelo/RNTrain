@@ -2,11 +2,11 @@
 general RN starter Project - support Native Navigation, TS, Mobx & Redux integrated with the latest version of react, react-native
 
 ## Feature
-  - [x] Integrate with airbnb - [native navigation](http://airbnb.io/native-navigation/docs/installation.html)
+  - [x] Integrate with airbnb's [native navigation](http://airbnb.io/native-navigation/docs/installation.html)
   - [x] Use Pod to integrate with exsiting project
   - [x] Deploy all code under the environment of the latested version of React & React Native("react": "16.0.0-alpha.12", "react-native": "^0.47.1")
   - [x] Support TypeScript Grammer instead of FLow(in TS-sample branch)
-  - [ ] Mobx / redux示例(in mobx-sample/redux-sample branch)
+  - [ ] Support Mobx & Redux(in mobx-sample/redux-sample branch)
 
 [PowerPointer](./PPT/RN基础与进阶.key)
 
