@@ -12,7 +12,7 @@ interface State {
 
 
 class HomeScreen extends Component<State> {
-	state = { theme: 'dark' }
+	state = { theme: 'light' }
 
   	componentWillMount() {
   		// 初始化的theme从AsyncStorage中更新: dark / light

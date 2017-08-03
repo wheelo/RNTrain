@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// 批量修改js后缀名为tsx的命令: LC_ALL=C find jsProtected/src/components -name *.js -exec sh -c 'mv "$0" "${0%.js}.tsx"' {} \;
 import {
   View, Text, StyleSheet,
   Platform, FlatList, Keyboard,
@@ -17,20 +18,33 @@ import * as actions from "../stateChanges";
 // let { height, width } = Dimensions.get(“window”);
 import themable from './Theme';
 
+// TODO: 导出为全局的类型 /??
+type ItemType = {
+    key: Number,
+	text: String,
+	complete: Boolean
+}
+
+interface State {
+	loading: Boolean,
+	value: String,
+	items: Array<ItemType>,
+	allComplete: Boolean,
+	filter: String,
+	dataSource: Array<ItemType>
+}
+
 @themable
-class Home extends Component {
-  	constructor(props) {
-    	super(props);
-    	// const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
-		this.state = {
-			loading: true,
-			value: "",
-			items: [],
-			allComplete: false,
-			filter: "ALL",
-			dataSource: []
-		};
-  	}
+class Home extends Component<State> {
+	// const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+	state = {
+		loading: true,
+		value: "",
+		items: [],
+		allComplete: false,
+		filter: "ALL",
+		dataSource: []
+	}
 
 	componentWillMount() {
 		// AsyncStorage.setItem("items", "");
@@ -69,11 +83,8 @@ class Home extends Component {
 	    	return;
 	    }
 	    this.setState(actions.addItem);
-	    // 如果输入 dark / light 切换主题
-	    if (this.state.value == 'dark') {
-	    	// 切换
-	    }
-
+	    // 47版本可以直接修改list样式
+	    // this.list.setNativeProps({ style: {backgroundColor: "black"} })
   	};
 
   	handleRemoveItem = key => {
@@ -110,6 +121,7 @@ class Home extends Component {
 					/>
 	        	<View style={styles.content}>
 		          	<FlatList
+						ref={_list => this.list = _list}
 			            style={styles.list}
 			            data={this.state.dataSource}
 			            onScroll={() => Keyboard.dismiss()}
