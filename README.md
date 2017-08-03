@@ -1,32 +1,32 @@
 # RNTrain
-RN简单TODO项目，此项目也可以作为RN启动项目
+general RN starter Project - support Native Navigation, TS, Mobx & Redux integrated with the latest version of react, react-native
 
-## 特征
+## Feature
+  - [x] Integrate with airbnb - [native navigation](http://airbnb.io/native-navigation/docs/installation.html)
+  - [x] Use Pod to integrate with exsiting project
+  - [x] Deploy all code under the environment of the latested version of React & React Native("react": "16.0.0-alpha.12", "react-native": "^0.47.1")
+  - [x] Support TypeScript Grammer instead of FLow(in TS-sample branch)
+  - [ ] Mobx / redux示例(in mobx-sample/redux-sample branch)
 
-  - [x] 集成Native Navigation(Pod)
-  - [x] 集成现有项目(Pod)
-  - [x] 使用最新版的React与React Native("react": "16.0.0-alpha.12", "react-native": "^0.47.1")
-  - [x] TypeScript语法支持(TS-sample分支)
-  - [ ] Mobx / redux示例(mobx与redux分支)
+[PowerPointer](./PPT/RN基础与进阶.key)
 
-[PPT地址](./PPT/RN基础与进阶.key)
-
-## 安装
+## Installation
+Installation mainly goes to Pod installation. As this is a repo for integrated with exsiting project:   
 
 ```sh
 	>> npm install
 	>> pod install
 ```
-- 注意安装过程会出现Animation动画库引用错误，找到错误的那一行，修改为：`import <React/RCTValueAnimatedNode.h>`
+- The installation will report an error about the animation, when error occurres, Plz change the line of source code to this: `import <React/RCTValueAnimatedNode.h>`
 
-## 使用
+## Usage
 
 ``` sh
-	// 找到RNTrain.xcworkspace，Xcode启动
-	// 然后命令行执行:
+	// Find RNTrain.xcworkspace and kick off the Xcode
+	// exec the following command:
 	>> sh build.sh
 ```
 
-## 参考
+## references
 - Native Navigation: http://airbnb.io/native-navigation/docs/installation.html
-- 集成现有项目: https://facebook.github.io/react-native/docs/integration-with-existing-apps.html
+- Integrate with the exsiting project: https://facebook.github.io/react-native/docs/integration-with-existing-apps.html
